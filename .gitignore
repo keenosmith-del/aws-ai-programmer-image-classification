@@ -1,0 +1,16 @@
+# Python virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+
+# Project-generated result files
+data/*_pet-images.txt
+data/*_uploaded-images.txt
