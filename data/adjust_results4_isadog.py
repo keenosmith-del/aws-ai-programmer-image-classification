@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/adjust_results4_isadog.py
 #                                                                             
-# PROGRAMMER: 
-# DATE CREATED:                                 
-# REVISED DATE: 
+# PROGRAMMER: Keeno Smith
+# DATE CREATED: 25 August 2026                               
+# REVISED DATE: 26 August 2026
 # PURPOSE: Create a function adjust_results4_isadog that adjusts the results 
 #          dictionary to indicate whether or not the pet image label is of-a-dog, 
 #          and to indicate whether or not the classifier image label is of-a-dog.
@@ -67,4 +67,34 @@ def adjust_results4_isadog(results_dic, dogfile):
     Returns:
            None - results_dic is mutable data type so no return needed.
     """           
-    None
+    # Creates dictionary of dog names from the dog names file
+    dognames_dic = dict()
+
+    # Reads the dognames file
+    with open(dogfile, "r") as infile:
+        for line in infile:
+            dog_name = line.rstrip()
+
+            # Adds dog name to dict if it doesn't already exist
+            if dog_name not in dognames_dic:
+                dognames_dic[dog_name] = 1
+            else:
+                print("** Warning: Duplicate dog name found:", dog_name)
+
+    # Processes each image in the results dect
+    for key in results_dic:
+        # Determines if the pet image label is a dog
+        if results_dic[key][0] in dognames_dic:
+            pet_is_dog = 1
+        else:
+            pet_is_dog = 0
+
+        # Determines if the classifier label is a dog
+        classifier_is_dog = 0
+        for dog_name in dognames_dic:
+            if dog_name in results_dic[key][1]:
+                classifier_is_dog = 1
+                break
+
+        # Adds the dog classification results to the results dictionary
+        results_dic[key].extend([pet_is_dog, classifier_is_dog])
