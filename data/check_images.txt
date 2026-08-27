@@ -2,19 +2,34 @@ Questions regarding Uploaded Image Classification:
 
 1. Did the three model architectures classify the breed of dog in Dog_01.jpg to be the same breed? If not, report the differences in the classifications.
 
-Answer: 
+Answer: Yes. All three CNN model architectures classified Dog_01.jpg as "eskimo dog, husky."
+Therefore, ResNet, AlexNet, adn VGG all produced the same breed classification for the Siberian Husky.
 
 
 2. Did each of the three model architectures classify the breed of dog in Dog_01.jpg to be the same breed of dog as that model architecture classified Dog_02.jpg? If not, report the differences in the classifications.
 
-Answer: 
+Answer: Yes. Each of the three model architectures classified both Dog_01.jpg and Dog_02.jpg as "eskimo dog, husky." 
+The horizontal flip of Dog_01.jpg did not change the breed classification for any of the models.
 
 
 3. Did the three model architectures correctly classify Animal_Name_01.jpg and Object_Name_01.jpg to not be dogs? If not, report the misclassifications.
 
-Answer: 
+Answer: Bear_01.jpg was correctly classified as a non-dog by all three models. All three models classified it as an American black bear. 
+For Sushi_01.jpg, AlexNet classified it as a vase and VGG classified it as a plate. 
+Although neither model correctly identified it as sushi, both correctly classified it as a non-dog. 
+ResNet incorrectly classified Sushi_01.jpg as a hotdog and therefore classified it as a dog.  
 
 
 4. Based upon your answers for questions 1. - 3. above, select the model architecture that you feel did the best at classifying the four uploaded images. Describe why you selected that model architecture as the best on uploaded image classification.
 
-Answer:
+Answer: AlexNet was selected as the best model for the uploaded-image classification task. 
+All three models correctly classified both dog images as dogs and produced the same "eskimo dog, husky" breed classification for the original and horizontally flipped image. 
+All three also correctly identified the bear as a non-dog. 
+However, ResNet incorrectly classified the sushi image as a hotdog and therefore as a dog.
+AlexNet and VGG both correctly classified the sushi image as a non-dog, although neither identified the object as sushi.
+Therefore, AlexNet and VGG performed equally well on the required dog/non-dog and breed measures, while ResNet performed worse because of its incorrect dog classification.
+AlexNet was selected as the best model because it achieved 100% on the relevant dog, non-dog, and breed classification measures while remaining consistent across the original and horizonatally flipped images. 
+
+
+FULL ANALYSIS CAN BE FOUND IN:
+data/uploaded_images_analysis.txt
