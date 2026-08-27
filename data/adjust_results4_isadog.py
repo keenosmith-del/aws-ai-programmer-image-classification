@@ -81,7 +81,7 @@ def adjust_results4_isadog(results_dic, dogfile):
             else:
                 print("** Warning: Duplicate dog name found:", dog_name)
 
-    # Processes each image in the results dect
+    # Processes each image in the results dict
     for key in results_dic:
         # Determines if the pet image label is a dog
         if results_dic[key][0] in dognames_dic:
