@@ -67,6 +67,8 @@ def calculates_results_stats(results_dic):
                      and the value is the statistic's value. See comments above
                      and the previous topic Calculating Results in the class for details
                      on how to calculate the counts and statistics.
+                     Percentages with no applicable images are 0.0, including
+                     all percentages when results_dic is empty.
     """
     # Replace None with the results_stats_dic dictionary that you created with this function
     # Creates empty disctionary for results_stats_dic
@@ -117,13 +119,20 @@ def calculates_results_stats(results_dic):
     results_stats_dic['n_notdogs_img'] = (results_stats_dic['n_images'] - results_stats_dic['n_dogs_img'])
 
     # calculates % correct for matches
-    results_stats_dic['pct_match'] = (results_stats_dic['n_match'] / results_stats_dic['n_images']) * 100.0
+    if results_stats_dic['n_images'] > 0:
+        results_stats_dic['pct_match'] = (results_stats_dic['n_match'] / results_stats_dic['n_images']) * 100.0
+    else:
+        results_stats_dic['pct_match'] = 0.0
 
     # calculates % correct dogs
-    results_stats_dic['pct_correct_dogs'] = (results_stats_dic['n_correct_dogs'] / results_stats_dic['n_dogs_img']) * 100.0
+    if results_stats_dic['n_dogs_img'] > 0:
+        results_stats_dic['pct_correct_dogs'] = (results_stats_dic['n_correct_dogs'] / results_stats_dic['n_dogs_img']) * 100.0
 
-    # calculates % correct breed of dogs
-    results_stats_dic['pct_correct_breed'] = (results_stats_dic['n_correct_breed'] / results_stats_dic['n_dogs_img']) * 100.0
+        # calculates % correct breed of dogs
+        results_stats_dic['pct_correct_breed'] = (results_stats_dic['n_correct_breed'] / results_stats_dic['n_dogs_img']) * 100.0
+    else:
+        results_stats_dic['pct_correct_dogs'] = 0.0
+        results_stats_dic['pct_correct_breed'] = 0.0
 
     # calculates % correct not-a-dog images
     if results_stats_dic['n_notdogs_img'] > 0:
