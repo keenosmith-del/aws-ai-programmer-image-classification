@@ -32,7 +32,6 @@ from print_functions_for_lab_checks import *
 # Imports functions created for this program
 from get_input_args import get_input_args
 from get_pet_labels import get_pet_labels
-from classify_images import classify_images
 from adjust_results4_isadog import adjust_results4_isadog
 from calculates_results_stats import calculates_results_stats
 from print_results import print_results
@@ -48,6 +47,9 @@ def main():
     # the collection of these command line arguments from the function call as
     # the variable in_arg
     in_arg = get_input_args()
+
+    # Help and argument errors must finish before loading inference dependencies.
+    from classify_images import classify_images
 
     # Function that checks command line arguments using in_arg  
     check_command_line_arguments(in_arg)
